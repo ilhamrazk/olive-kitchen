@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: olive-kitchen
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://<host>:<port>/<dbname>   # Ganti dengan URL DB kamu
+      - key: SPRING_DATASOURCE_USERNAME
+        sync: false   # Diisi manual di Render Dashboard
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false   # Diisi manual di Render Dashboard
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: update   # Ganti ke 'validate' atau 'none' jika sudah production
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
